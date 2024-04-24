@@ -1,0 +1,183 @@
+.App{
+  max-width: 100%;
+  height: 550px;
+  background: url(./back.jpg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.booking{
+  align-items: center;
+  /* margin: 300px 100px 100px 80px; */
+  position: relative;  
+    left: 68.5%;
+    bottom: 48%;
+}
+.booking img{
+ width: 220px;
+ border-radius: 180px;
+
+}
+
+.chat-container {
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 5px rgba(0.8, 0, 0.9, 0.9);
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  background-color:rgba(0, 0, 0, 0.4);
+}
+  
+.chat-container h1 {
+    text-align: center;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    padding:10px 0px 10px 0px;
+  }
+  
+  .chat-history {
+    padding: 10px;
+    height: 394px;
+    overflow-y:auto;
+  }
+
+
+    .chat-history::-webkit-scrollbar{
+      display: none;
+    }
+
+   
+    
+  
+  .user {
+    text-align: left; 
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    max-width: 70%;
+    width: auto;
+    float: right;
+    clear: both;
+    margin-bottom: 4%;
+    align-self: flex-end;
+  }
+  .message {
+    display: flex;
+    position: absolute;
+    align-self: flex-start;
+    text-align: left;
+    padding: 10px;
+    background-color: #0dcaf0;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    clear: both;
+    margin-bottom: 4%;
+    position: relative;
+  
+    max-width: 70%; 
+    width: auto;
+  }
+  
+  .bot {
+    background-color: #f0f0f0;
+  }
+  
+  .chat-form {
+    display: flex;
+    align-items: center;
+  }
+  .chat-form input{
+    width: auto;
+  }
+  
+  .chat-form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .chat-form button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .chat-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .buttons {
+    margin-top: 10px;
+  }
+  
+  .buttons button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .buttons button:hover {
+    background-color: #0056b3;
+  }
+  .microphone-btn{
+    width: 35px;
+    cursor: pointer;
+    padding: 10px;
+    background: transparent;
+  }
+  .stop-btn{
+    width: 31px;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .transcript{
+    display: flex;
+    margin:20px 10px 0px 10px;
+    flex-direction: column-reverse;
+    width: auto;
+    border-radius: 10px;
+    padding: 10px 20px;
+    position: relative;
+    bottom: 32%;
+    overflow-y: auto;
+    max-height: 40px;
+  }
+
+  .transcript::-webkit-scrollbar
+  {
+    display: none;
+  }
+  .cross-btn{
+    width: 20px;
+    cursor: pointer;
+    padding-left: 368px;
+    position: fixed;
+  }
+  button.submit-btn{
+    background-color: #fcc45c;
+    color: black;
+  }
+
+  button.submit-btn:hover {
+    background-color: #d4247c;
+    
+  }
+
+  button.booking-btn:hover {
+    background-color: #fcc45c;
+    border-radius: 20px;
+  }

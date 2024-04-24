@@ -1,0 +1,56 @@
+
+/* .App {
+  /* text-align: center; */
+  /* margin-top: 20px; */
+/* } */ */
+
+.chat-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: auto;
+}
+
+.chat-history {
+  height: 350px;
+  overflow-y: scroll;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.user {
+  text-align: right;
+  background-color: #f0f0f0;
+}
+
+.bot {
+  text-align: left;
+  background-color: #e0f0e0;
+}
+
+.chat-form {
+  display: flex;
+}
+
+input {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  /* background-color: #4caf50; */
+  /* color: white; */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
