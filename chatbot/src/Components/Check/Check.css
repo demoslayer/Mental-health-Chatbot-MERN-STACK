@@ -152,7 +152,8 @@
     border-radius: 10px;
     padding: 10px 20px;
     position: relative;
-    bottom: 32%;
+    bottom: 75%;
+    left: 104%;
     overflow-y: auto;
     max-height: 40px;
   }
@@ -165,7 +166,9 @@
     width: 20px;
     cursor: pointer;
     padding-left: 368px;
-    position: fixed;
+    position: absolute;
+    left:40%;
+    top:35%;
   }
   button.submit-btn{
     background-color: #fcc45c;

@@ -114,11 +114,6 @@ function Check() {
 
   return (
     <div className="App">
-          {/* chatHistory.scrollTop = chatHistory.scrollHeight; */}
-          {/* <video autoPlay loop muted  playsInline  className="bg-vid" >
-      <source src={newvideo} type="video/mp4" /> </video> */}
-     
-      {/* <img src={back} alt="" /> */}
 
       <div className="chat-container">
         <h1>WellBot</h1>
@@ -142,9 +137,9 @@ function Check() {
           <button className='submit-btn' type="submit">Send</button>
         </form>
         <div className="transcript">{transcript}
-{transcript!==""?<img  src={cross} className='cross-btn' onClick={handleResetClick} alt="" />:<></>}
-
         </div>
+        <div className='cross-btn'>{transcript!==""?<img  src={cross} onClick={handleResetClick} alt="" />:<></>}
+</div>
       </div>
       <div className="booking">
       <Link to='/booking'><img src={book} alt="" /></Link>
