@@ -1,13 +1,14 @@
 .book{
     width: 100%;
-    height: 80vh;
+    /* height: 80vh; */
     background:  #fce3fe;
     padding-top: 15px;
     padding-bottom: 250px;
+    overflow-x: hidden;
 }
 .book-container{
     width: 450px;
-    height: 680px;
+    height: 730px;
     padding:10px 60px;
     margin: auto;
     background: white;
@@ -50,4 +51,54 @@
     background-color:  #ff4141;
     margin-top: 20px;
     margin-left: 185px;
+    color:white;
+}
+.prev-booking{
+    position: relative;
+    left:43.5%;
+    margin-top: 15px;
+    background-color: #ff4141;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.user-bookings h2{
+    position: relative;
+    left: 43%;
+    padding: 20px 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size :30px;
+    font-weight :800;
+}
+.use{
+    /* width: -webkit-fill-available; */
+    max-width: 400px;
+    padding: 10px 0px 25px 26px;
+    box-shadow: 5px 10px 20px rgba(27.9, 0, 50.9, 180.9);
+    margin-bottom: 15px;
+    margin-left: 35%;
+    border-radius: 30px;
+}
+.use p{
+    margin: 5px 0px 5px 5px;
+    padding: 2px 2px 5px 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size:17px;
+    letter-spacing: 0.8px;
+    font-weight:550;
+    line-height: 24px;
+}
+.nobook p{
+    align-items: center;
+    position: relative;
+    left: 45%;
+    font-family: 'Poppins', sans-serif;
+    font-size:17px;
+    letter-spacing: 0.8px;
+    font-weight:550;
+    line-height: 24px;
 }

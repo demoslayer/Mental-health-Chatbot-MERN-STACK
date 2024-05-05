@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './LoginSignup.css'
-import Chatbot from '../Chatbot/Chatbot'
 function LoginSignup() {
   const [state,setState]=useState("Signup");
 

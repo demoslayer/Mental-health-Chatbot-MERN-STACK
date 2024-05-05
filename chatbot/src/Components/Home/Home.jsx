@@ -4,7 +4,7 @@ import mental_bot_image from './Mental_health_chatbot.jpg'
 import bot1 from './bot1.png'
 import bot22 from './bot22.jpg'
 import bot444 from './bot444.jpg'
-import girl_image from './girl.jpg';
+import girl_image from './homechat.png';
 import back_img from './signupill.png'
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer'
@@ -37,7 +37,7 @@ function Home() {
             <img src={back_img} alt="" />
             </div>
         </div>
-        <div className="about">
+        <div className="abouts">
          <Link to='/check'><button class="btn">
          TRY CHATBOT
         </button></Link> 

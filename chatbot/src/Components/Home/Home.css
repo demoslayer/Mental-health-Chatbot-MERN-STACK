@@ -46,11 +46,15 @@ padding-bottom: 10px;
 }
 .girl-thought{
     display: flex;
+    padding-top: 50px;
+    gap:10px;
 }
 .girl-thought img{
     width: 300px;
+    border-radius: 100px;
+    padding:10px 0px 10px 20px;
 }
-.about{
+.abouts{
     display: flex;
     flex-direction: column;
     align-items: center;

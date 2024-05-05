@@ -5,7 +5,7 @@ import bot1 from './bot1.png'
 import bot22 from './bot22.jpg'
 import bot444 from './bot444.jpg'
 import chatbot_img from './chatbot.png';
-import girl_image from './girl.jpg';
+import girl_image from './homechat.png';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer'
 function Home() {

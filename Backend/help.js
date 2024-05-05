@@ -234,70 +234,81 @@ app.post('/chat', async (req, res) => {
 });
 
 // Schema for Creating user model
-const Users=mongoose.model('Users',{
-  name:{
-    type:String,
-  },
-  email:{
-    type:String,
-    unique:true,
-  },
-  password:{
-    type:String,
-  },
-  // logindata:{
-  //   type:Object,
-  // },
-  date:{
-    type:Date,
-    default:Date.now,
-  }
-})
+// const Users=mongoose.model('Users',{
+//   name:{
+//     type:String,
+//   },
+//   email:{
+//     type:String,
+//     unique:true,
+//   },
+//   password:{
+//     type:String,
+//   },
+//   logindata:{
+//     type:Object,
+//   },
+//   date:{
+//     type:Date,
+//     default:Date.now,
+//   }
+// })
 
-// Creating endpoint for signup
-app.post('/signup',async(req,res)=>{
-  let check=await Users.findOne({email:req.body.email});
-  if(check){
-    return res.status(400).json({success:false,errors:"User Already exist!"});
-  }
-  // let login={};
-  // for (let index = 0; index <300; index++) {
-  //   login[index]=0;
-  // }
-  const user=new Users({
-    name:req.body.username,
-    email:req.body.email,
-    password:req.body.password,
-  })
+// // Creating endpoint for signup
+// app.post('/signup',async(req,res)=>{
+//   let check=await Users.findOne({email:req.body.email});
+//   if(check){
+//     return res.status(400).json({success:false,errors:"User Already exist!"});
+//   }
+//   let login={};
+//   for (let index = 0; index <300; index++) {
+//     login[index]=0;
+//   }
+//   const user=new Users({
+//     name:req.body.username,
+//     email:req.body.email,
+//     password:req.body.password,
+//     logindata:login,
+//   })
 
-  await user.save();
-  //creating the token 
-  // const data={
-  //   user:{
-  //     id:user.id
-  //   }
-  // }
-  const token=jwt.sign({userId:user._id},'secret_chat');
-  res.json({success:true,token});
-});
+//   await user.save();
+//   //creating the token 
+//   const data={
+//     user:{
+//       id:user.id
+//     }
+//   }
+//   const token=jwt.sign(data,'secret_chat');
+//   res.json({success:true,token});
+// });
 
-//Creating endpoint for UserLogin
+// //Creating endpoint for UserLogin
 
-app.post('/login',async(req,res)=>{
-  const {email,password}=req.body;
-  let user=await Users.findOne({email:req.body.email});
-  
-    if (!user || user.password !== password) {
-      return res.status(401).json({ success: false, error: "Invalid credentials" });
-    }
-    const token = jwt.sign({ userId: user._id }, 'secret_chat');
-    res.json({ success: true, token });
-});
+// app.post('/login',async(req,res)=>{
+//   let user=await Users.findOne({email:req.body.email});
+//   if(user){
+//     const passCompare=req.body.password===user.password;
+//     if(passCompare){
+//       const data={
+//         user:{
+//           id:user.id
+//         }
+//       }
+//       const token=jwt.sign(data,'secret_chat');
+//       res.json({success:true,token})
+//     }
+//     else
+//     res.json({success:false,error:"Wrong password"})
+
+//   }
+//   else{
+//     res.json({success:false,error:"Wrong email id"});
+//   }
+// });
 
 
-//Schema for creating booking session
+// //Schema for creating booking session
 // const Book=mongoose.model('Booking',{
-//   userId:String,
 //   name:{
 //     type:String
 //   },
@@ -319,85 +330,8 @@ app.post('/login',async(req,res)=>{
 //   }
 // })
 
-const Booking = mongoose.model('Booking', {
-  userId: {
-    type: String,
-    required: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  phone: {
-    type: Number,
-    required: true,
-    validate: {
-      validator: function(v) {
-        return /^[0-9]{10}$/.test(v);
-      },
-      message: props => `${props.value} is not a valid phone number!`
-    }
-  },
-  age: {
-    type: Number,
-    required: true,
-    validate: {
-      validator: Number.isInteger,
-      message: props => `${props.value} is not an integer value for age!`
-    }
-  },
-  address: {
-    type: String,
-    required: true
-  },
-  timeslot: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: String,
-    required: true
-  }
-});
-
-
-
-app.post('/booking', async (req, res) => {
-  try {
-    const authToken = req.headers.authorization;
-    const { name, phone, age, address, timeslot,date } = req.body;
-    const tokenData = jwt.verify(authToken, 'secret_chat');
-    const userId = tokenData.userId;
-    const booking = new Booking({ userId, name, phone, age, address, timeslot,date });
-    await booking.save();
-    res.json({ success: true, message: "Booking successful" });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-
-app.get('/user-bookings', async (req, res) => {
-  try {
-    const authToken = req.headers.authorization;
-    const tokenData = jwt.verify(authToken, 'secret_chat');
-    const userId = tokenData.userId;
-    const bookings = await Booking.find({ userId });
-    res.json({ success: true, bookings });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
 // app.post('/booking',async(req,res)=>{
-//   const authToken = req.headers.authorization;
-//     const { name, phone, age, address, timeslot } = req.body;
-//     const tokenData = jwt.verify(authToken, 'secret_chat');
-//     const userId = tokenData.userId;
-//     // const book = new Book({ userId, name, phone, age, address, timeslot });
-
 //   const book=new Book({
-//     userId:req.body.userId,
 //     name:req.body.name,
 //     phone:req.body.phone,
 //     age:req.body.age,
@@ -415,94 +349,94 @@ app.get('/user-bookings', async (req, res) => {
 
 
 
-// const Users = mongoose.model('Users', {
-//   name: String,
-//   email: {
-//     type: String,
-//     unique: true
-//   },
-//   password: String,
-//   logindata: Object,
-//   date: {
-//     type: Date,
-//     default: Date.now
-//   }
-// });
+const Users = mongoose.model('Users', {
+  name: String,
+  email: {
+    type: String,
+    unique: true
+  },
+  password: String,
+  logindata: Object,
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
 
-// // Schema for Booking
-// const Booking = mongoose.model('Booking', {
-//   userId: String, // Add userId field to relate booking to user
-//   name: String,
-//   phone: String,
-//   age: String,
-//   address: String,
-//   timeslot: String,
-//   date: {
-//     type: Date,
-//     default: Date.now
-//   }
-// });
+// Schema for Booking
+const Booking = mongoose.model('Booking', {
+  userId: String, // Add userId field to relate booking to user
+  name: String,
+  phone: String,
+  age: String,
+  address: String,
+  timeslot: String,
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
 
-// // Signup endpoint
-// app.post('/signup', async (req, res) => {
-//   try {
-//     const existingUser = await Users.findOne({ email:req.body.email });
-//     if (existingUser) {
-//       return res.status(400).json({ success: false, error: "User already exists" });
-//     }
+// Signup endpoint
+app.post('/signup', async (req, res) => {
+  try {
+    const existingUser = await Users.findOne({ email:req.body.email });
+    if (existingUser) {
+      return res.status(400).json({ success: false, error: "User already exists" });
+    }
     
-//     const { name, email, password } = req.body;
-//     const user = new Users({ name, email, password });
-//     await user.save();
-//     const token = jwt.sign({ userId: user._id }, 'secret_chat');
-//     res.json({ success: true, token });
-//   } catch (error) {
-//     res.status(500).json({ success: false, error: error.message });
-//   }
-// });
+    const { name, email, password } = req.body;
+    const user = new Users({ name, email, password });
+    await user.save();
+    const token = jwt.sign({ userId: user._id }, 'secret_chat');
+    res.json({ success: true, token });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
-// // Login endpoint
-// app.post('/login', async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-//     const user = await Users.findOne({ email });
-//     if (!user || user.password !== password) {
-//       return res.status(401).json({ success: false, error: "Invalid credentials" });
-//     }
-//     const token = jwt.sign({ userId: user._id }, 'secret_chat');
-//     res.json({ success: true, token });
-//   } catch (error) {
-//     res.status(500).json({ success: false, error: error.message });
-//   }
-// });
+// Login endpoint
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await Users.findOne({ email });
+    if (!user || user.password !== password) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+    const token = jwt.sign({ userId: user._id }, 'secret_chat');
+    res.json({ success: true, token });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
-// // Booking endpoint
-// app.post('/booking', async (req, res) => {
-//   try {
-//     const authToken = req.headers.authorization;
-//     const { name, phone, age, address, timeslot } = req.body;
-//     const tokenData = jwt.verify(authToken, 'secret_chat');
-//     const userId = tokenData.userId;
-//     const booking = new Booking({ userId, name, phone, age, address, timeslot });
-//     await booking.save();
-//     res.json({ success: true, message: "Booking successful" });
-//   } catch (error) {
-//     res.status(500).json({ success: false, error: error.message });
-//   }
-// });
+// Booking endpoint
+app.post('/booking', async (req, res) => {
+  try {
+    const authToken = req.headers.authorization;
+    const { name, phone, age, address, timeslot } = req.body;
+    const tokenData = jwt.verify(authToken, 'secret_chat');
+    const userId = tokenData.userId;
+    const booking = new Booking({ userId, name, phone, age, address, timeslot });
+    await booking.save();
+    res.json({ success: true, message: "Booking successful" });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
-// // User bookings endpoint
-// app.get('/user-bookings', async (req, res) => {
-//   try {
-//     const authToken = req.headers.authorization;
-//     const tokenData = jwt.verify(authToken, 'secret_chat');
-//     const userId = tokenData.userId;
-//     const bookings = await Booking.find({ userId });
-//     res.json({ success: true, bookings });
-//   } catch (error) {
-//     res.status(500).json({ success: false, error: error.message });
-//   }
-// });
+// User bookings endpoint
+app.get('/user-bookings', async (req, res) => {
+  try {
+    const authToken = req.headers.authorization;
+    const tokenData = jwt.verify(authToken, 'secret_chat');
+    const userId = tokenData.userId;
+    const bookings = await Booking.find({ userId });
+    res.json({ success: true, bookings });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
 
 
@@ -528,76 +462,21 @@ const thoughts=[
   },
   {
       id:4,
-      joketext:"If you can stay positive in a negative situation, you win!!",
+      joketext:"shut your door!!",
       joketype:"",
   },{
       id:5,
-      joketext:"Stay positive. Better days are on their way.!!",
+      joketext:"I will kick your heart",
       joketype:"Normal",
   },{
       id:6,
-      joketext:"Say something positive, and you’ll see something positive.",
+      joketext:"Do some funny things",
       joketype:"Moderate",
   },{
       id:7,
       joketext:"Don't take stress!!",
       joketype:"",
   },
-  {
-    id:8,
-    joketext:"You can have it all. Just not all at once.!!",
-    joketype:"",
-},
-{
-  id:9,
-  joketext:"Keep your face always toward the sunshine—and shadows will fall behind you.!!",
-  joketype:"",
-},
-{
-  id:10,
-  joketext:"If you want to live a happy life, tie it to a goal, not to people or things.!!",
-  joketype:"",
-},
-{
-  id:11,
-  joketext:"Never let the fear of striking out keep you from playing the game!!",
-  joketype:"",
-},
-{
-  id:12,
-  joketext:"In order to write about life first you must live it.",
-  joketype:"",
-},
-{
-  id:13,
-  joketext:"Sing like no one’s listening, love like you’ve never been hurt, dance like nobody’s watching, and live like it’s heaven on earth!!",
-  joketype:"",
-},
-{
-  id:14,
-  joketext:"Life is like riding a bicycle. To keep your balance, you must keep moving.",
-  joketype:"",
-},
-{
-  id:15,
-  joketext:"Live for each second without hesitation.!!",
-  joketype:"",
-},
-{
-  id:16,
-  joketext:"The healthiest response to life is joy.!!",
-  joketype:"",
-},
-{
-  id:17,
-  joketext:"Once you replace negative thoughts with positive ones, you'll start having positive results!!",
-  joketype:"",
-},
-{
-  id:18,
-  joketext:"Whenever something bad happens, keep calm, take a few deep breaths and shift the focus to something positive.",
-  joketype:"",
-},
 
 ]
 

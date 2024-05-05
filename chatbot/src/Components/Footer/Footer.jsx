@@ -8,10 +8,10 @@ function Footer() {
         <h1>Contact Us</h1>
     <div className="container">
         <div className="name">
-            <p>XYZ</p>
+            <p>WELLBOT</p>
         </div>
         <div className="contact">
-            <p>43544343</p>
+            <p>8542821917</p>
         </div>
         <div className="email">
             <p>wellbot@gmail.com</p>
