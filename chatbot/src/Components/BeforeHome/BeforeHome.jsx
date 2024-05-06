@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer'
 function Home() {
 
+  
   const[allthoughts,setAllThoughts]=useState({});
 
   const fetchInfo=async()=>{

@@ -42,6 +42,7 @@ function Home() {
          TRY CHATBOT
         </button></Link> 
           <div className="about-topic">
+          
     <h1>About Chatbot</h1>
           </div>
         
