@@ -60,3 +60,13 @@ The Mental Health Chatbot is a MERN Stack application designed to assist users i
 For any queries or contributions, feel free to reach out to:
 - **Author**: Byas Yadav
 - **Email**: byasyadav371@example.com
+
+### Snapshots
+![image](https://github.com/user-attachments/assets/dff3860f-7874-48d5-80f0-51de590c003a)
+
+![image](https://github.com/user-attachments/assets/3465e21a-9722-4a53-ad5a-7a1c2b85487a)
+
+![image](https://github.com/user-attachments/assets/3461eb17-e8bf-4331-8b64-94856f3fc718)
+
+
+
