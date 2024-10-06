@@ -57,7 +57,7 @@ The Mental Health Chatbot is a MERN Stack application designed to assist users i
 - Implementing data analytics for better insights into user mental health trends.
 
 ### Contact
-For any queries or contributions, feel free to reach out to:
+For any queries or contributions, feel free to reach out to me:
 - **Author**: Byas Yadav
 - **Email**: byasyadav371@example.com
 
